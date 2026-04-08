@@ -7,8 +7,7 @@ COPY ["Api.csproj", "./"]
 RUN dotnet restore "Api.csproj"
 
 # Copy the rest of the source code
-COPY . .
-
+COPY --exclude=obj --exclude=bin . .
 # Build the application
 WORKDIR "/src/"
 RUN dotnet build "Api.csproj" -c Release -o /app/build
